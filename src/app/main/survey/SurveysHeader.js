@@ -18,8 +18,10 @@ function SurveyHeader() {
 	const [searchText, setSearchText] = useState("");
 
 	const handleDownloadAllSurvey =  () => {
-		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-all-surveys`;
-		//window.location.href = `http://localhost:8000/api/v1/download-all-surveys`;
+		const token = window.localStorage.getItem('fieledlanka_access_token');
+		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-all-surveys?token=${token}`;
+		//window.location.href = `http://localhost:8000/api/v1/download-all-surveys?token=${token}`;
+	
 	}
 
 

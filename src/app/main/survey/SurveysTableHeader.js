@@ -59,6 +59,13 @@ const rows = [
 		label: 'GN',
 		sort: true
 	},
+	{
+		id: 'languege',
+		align: 'left',
+		disablePadding: false,
+		label: 'Lang',
+		sort: true
+	},
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -85,8 +92,10 @@ function SurveyTableHead(props) {
 	}
 
 	const handleDownloadSurvey =  () => {
-		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-surveys?surveys=${selectSurveysById}`;
-		//window.location.href = `http://localhost:8000/api/v1/download-surveys?surveys=${selectSurveysById}`;
+		const token = window.localStorage.getItem('fieledlanka_access_token');
+
+		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-surveys?surveys=${selectSurveysById}&token=${token}`;
+		//window.location.href = `http://localhost:8000/api/v1/download-surveys?surveys=${selectSurveysById}&token=${token}`;
 
 	}
 

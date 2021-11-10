@@ -151,7 +151,7 @@ function SurveysTable() {
 									</TableCell>
 
 									<TableCell className="p-4 md:p-10" component="th" scope="row">
-										{n.name}
+										{n.name.substring(0, n.name.length - 5)}
 									</TableCell>
 
 									<TableCell className="p-4 md:p-10" component="th" scope="row">
@@ -164,6 +164,10 @@ function SurveysTable() {
 
 									<TableCell className="p-4 md:p-10" component="th" scope="row">
 										{n.gn}
+									</TableCell>
+
+									<TableCell className="p-4 md:p-10" component="th" scope="row">
+										{n.language.toUpperCase()}
 									</TableCell>
 
 								</TableRow>
