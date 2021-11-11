@@ -15,6 +15,10 @@ export const setUserData = user => async (dispatch, getState) => {
 	dispatch(setUser(user));
 };
 
+export const setTotSurveys = (total) => async (dispatch) => {
+	dispatch(setTotalSurveys(total));
+};
+
 export const updateUserSettings = settings => async (dispatch, getState) => {
 	const oldUser = getState().auth.user;
 	const user = _.merge({}, oldUser, { data: { settings } });
@@ -57,7 +61,9 @@ export const logoutUser = () => async (dispatch, getState) => {
 
 const initialState = {
 	role: [], // guest
+	totalSurveys : 0,
 	data: {
+		numOfSurveys : 0,
 		displayName: 'John Doe',
 		photoURL: 'assets/images/avatars/profile.jpg',
 		email: 'johndoe@withinpixels.com',
@@ -70,11 +76,14 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		setUser: (state, action) => action.payload,
+		setTotalSurveys: (state, action) => {
+			state.totalSurveys = action.payload
+		},
 		userLoggedOut: (state, action) => initialState
 	},
 	extraReducers: {}
 });
 
-export const { setUser, userLoggedOut } = userSlice.actions;
+export const { setUser, userLoggedOut, setTotalSurveys } = userSlice.actions;
 
 export default userSlice.reducer;

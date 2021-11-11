@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import { setSurveySearchText } from '../store/surveysSlice';
 import Button from '@material-ui/core/Button';
-import api from '../utils/api';
 
 function SurveyHeader() {
 	const dispatch = useDispatch();
+	const user = useSelector(({ auth }) => auth.user);
 	const sText = "";
 	const mainTheme = useSelector(selectMainTheme);
 	const [searchText, setSearchText] = useState("");
@@ -21,19 +21,18 @@ function SurveyHeader() {
 		const token = window.localStorage.getItem('fieledlanka_access_token');
 		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-all-surveys?token=${token}`;
 		//window.location.href = `http://localhost:8000/api/v1/download-all-surveys?token=${token}`;
-	
+
 	}
 
-
 	return (
-		<div className="flex flex-1 w-full items-center justify-between">
+		<div className="flex flex-1 w-full items-center justify-between m-4">
 			<div className="flex items-center">
 				<FuseAnimate animation="transition.expandIn" delay={300}>
 					<Icon className="text-32">shopping_basket</Icon>
 				</FuseAnimate>
 				<FuseAnimate animation="transition.slideLeftIn" delay={300}>
 					<Typography className="hidden sm:flex mx-0 sm:mx-12" variant="h6">
-						List of surveys
+						List of surveys : {user.totalSurveys}
 					</Typography>
 				</FuseAnimate>
 			</div>

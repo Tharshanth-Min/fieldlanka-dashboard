@@ -11,8 +11,11 @@ import { withRouter } from 'react-router-dom';
 import FuseLoading from '@fuse/core/FuseLoading';
 import SurveysTableHeader from './SurveysTableHeader';
 import surveyService from '../../services/surveyService';
+import { useDispatch } from "react-redux";
+import { setTotSurveys } from "../../auth/store/userSlice";
 
 function SurveysTable() {
+	const dispatch = useDispatch();
 	const searchText = "";
 	const [meta, setMeta] = useState(0);
 	const [loading, setLoading] = useState(true);
@@ -30,12 +33,13 @@ function SurveysTable() {
 
 	}, [page, rowsPerPage, searchText]);
 
-	const fetchConsigneeForms = () => {
+	const fetchConsigneeForms = async () => {
 		setLoading(true);
-		surveyService.getAll(rowsPerPage, page, searchText)
+		await surveyService.getAll(rowsPerPage, page, searchText)
 			.then((res) => {
 				setData(res.data);
 				setMeta(res.meta)
+				dispatch(setTotSurveys(res.meta.total))
 				setLoading(false);
 			})
 	};
