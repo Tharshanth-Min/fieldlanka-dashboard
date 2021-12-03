@@ -19,8 +19,8 @@ function SurveyHeader() {
 
 	const handleDownloadAllSurvey =  () => {
 		const token = window.localStorage.getItem('fieledlanka_access_token');
-		window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-all-surveys?token=${token}`;
-		//window.location.href = `http://localhost:8000/api/v1/download-all-surveys?token=${token}`;
+		//window.location.href = `http://fieldlanka.titum.org.lk/api/public/api/v1/download-all-surveys?token=${token}`;
+		window.location.href = `http://localhost:8000/api/v1/download-all-surveys?token=${token}`;
 
 	}
 
@@ -73,7 +73,7 @@ function SurveyHeader() {
 				</ThemeProvider>
 			</div>
 
-			<FuseAnimate animation="transition.slideRightIn" delay={300}>
+			 <FuseAnimate animation="transition.slideRightIn" delay={300}>
 				<Button
 					startIcon={<Icon>download</Icon>}
 					className="whitespace-no-wrap normal-case"
@@ -83,7 +83,7 @@ function SurveyHeader() {
 				>
 					<span className="hidden sm:flex">Download all surveys</span>
 				</Button>
-			</FuseAnimate>
+			</FuseAnimate> 
 		</div>
 	);
 }

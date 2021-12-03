@@ -28,10 +28,10 @@ function SurveysTable() {
 		id: null
 	});
 
-	useEffect(() => {
-		fetchConsigneeForms();
-
-	}, [page, rowsPerPage, searchText]);
+	// useEffect(() => {
+	// 	fetchConsigneeForms();
+  //
+	// }, [page, rowsPerPage, searchText]);
 
 	const fetchConsigneeForms = async () => {
 		setLoading(true);
